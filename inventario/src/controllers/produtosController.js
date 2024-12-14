@@ -6,3 +6,24 @@
 existente. 
  * - removerProduto: Valida e remove um produto. 
  */
+
+import { produtosRepository } from "../repositories/produtosRepository.js";
+
+
+const produtosController = {
+
+
+    save: (produtos) => produtosRepository.save(produtos),
+
+    
+    remove: (id) => produtosRepository.remove(id),
+
+    
+    getProdutos: () => produtosRepository.getProdutos(),
+
+   
+    findByid: (id) => produtosRepository.findByid(id)
+
+}
+
+export default produtosController

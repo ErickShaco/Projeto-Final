@@ -7,31 +7,55 @@ produtos.
 
 import prompt from "prompt-sync"
 import utils from "../../utils/utils.js"
-import menuPrincipal from ".."
+import menuPrincipal from "../index.js"
+import produtosController from "../controllers/produtosController.js"
 
-const prompt = prompt()
+
 const width = 80
+const input = prompt()
 
-const cadastrarUsuario = () => {
+const adcProduto = () => {
     console.clear()
     console.log(utils.createBase(width))
     console.log(utils.formatMessage("Cadastrar usuário", width))
     console.log(utils.createBase(width))
-    const cpf = prompt("| * CPF: ")
-    const nome = prompt("| * Nome: ")
-    const fone = prompt("| * Fone: ")
-    const email = prompt("| * E-mail: ")
-    usuarioController.save({ cpf, nome, fone, email })
+    let id = Date.now().toString()
+    const nome = input("| * Nome: ")
+    const categoria = input("| * Categoria: ")
+    const quantidade = input("| * Quantidade: ")
+    const preco = input("| * Preço: ")
+    produtosController.save({ id, nome, categoria, quantidade, preco })
     console.log(utils.createBase(width))
-    console.log(utils.formatMessage("Usuário cadastrado com sucesso!", width))
+    console.log(utils.formatMessage("Produto cadastrado com sucesso!", width))
     console.log(utils.createBase(width))
-    prompt("Pressione Enter para continuar...")
-    usuarioView()
+    input("Pressione Enter para continuar...")
+    produtosView()
 }
+
+
+
+const listarProdutos = () => {
+    console.clear();
+    console.log(utils.createBase(width));
+    console.log(utils.formatMessage("Todos os Produtos", width));
+    console.log(utils.createBase(width));
+    produtosController.getProdutos().forEach(produto => {
+        console.log(utils.formatMessage(`ID: ${produto.id}`, width));
+        console.log(utils.formatMessage(`Nome: ${produto.nome}`, width));
+        console.log(utils.formatMessage(`Categoria: ${produto.categoria}`, width));
+        console.log(utils.formatMessage(`Quantidade: ${produto.quantidade}`, width));
+        console.log(utils.formatMessage(`Preço: ${produto.preco}`, width));
+        console.log(utils.formatMessage("", width));
+    });
+    console.log(utils.createBase(width));
+    input("Pressione Enter para continuar...");
+    produtosView();
+};
+
 
 const produtosView = () => {
     console.clear();
-    console.log(utils.createBase(width));
+    console.log(utils.createBase(width))
     console.log(utils.formatMessage("Menu Produtos", width))
     console.log(utils.createBase(width))
     console.log(utils.formatMessage("1 - Listar todos os Produtos", width))
@@ -40,30 +64,30 @@ const produtosView = () => {
     console.log(utils.formatMessage("4 - Excluir Produto", width))
     console.log(utils.formatMessage("0 - Retornar ao menu principal", width))
     console.log(utils.createBase(width))
-    const opcao = prompt("| * Digite a opção desejada: ")
+    const opcao = input("| * Digite a opção desejada: ")
     switch (opcao) {
         case "0":
             menuPrincipal()
             break;
         case "1":
-            cadastrarUsuario()
+           listarProdutos()
             break;
         case "2":
-            editarUsuario()
+            adcProduto()
             break;
         case "3":
-            excluirUsuario()
+            
             break;
         case "4":
-            listarUsuarios()
+           
             break;
         case "5":
-            buscarUsuario()
+            
             break;
         default:
-            usuarioView()
+           
     }
 };
 
-// Exporta a visualização de usuário
 export default produtosView
+

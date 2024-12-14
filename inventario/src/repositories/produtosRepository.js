@@ -7,7 +7,7 @@
  * - removerProduto///: Remove um produto pelo ID. 
  */
 
- import { database } from "./database";
+ import { database } from "./database.js";
 
  export const produtosRepository = {
      // Listar Todos os Produtos
@@ -24,14 +24,14 @@
              return isprodExists
          } else {
              database.produtos.push(produtos)
-             return usuario
+             return produtos
          }
      },
  
      // Excluir produto
      remove: (id) => {
-         const index = database.usuarios.findIndex(usuario => usuario.cpf === cpf)
-         database.usuarios.splice(index, 1)
+         const index = database.produtos.findIndex(produto => produto.id === id)
+         database.produtos.splice(index, 1)
      }
  
  
