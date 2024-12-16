@@ -4,6 +4,16 @@
 informações. 
  */
 export const database = { 
-    produtos: [], 
+    produtos: [{
+        id: "1234567890123",
+        nome: "Oleo",
+        categoria: "Cozinha",
+        quantidade: "14",
+        preco: "14,90"
+    }],
+    
+
     categorias: [] 
+
+
     }

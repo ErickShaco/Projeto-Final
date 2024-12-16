@@ -22,7 +22,7 @@ const produtosController = {
     getProdutos: () => produtosRepository.getProdutos(),
 
    
-    findByid: (id) => produtosRepository.findByid(id)
+    findById: (id) => produtosRepository.findById(id)
 
 }
 

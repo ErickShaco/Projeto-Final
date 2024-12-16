@@ -35,22 +35,51 @@ const adcProduto = () => {
 
 
 const listarProdutos = () => {
-    console.clear();
-    console.log(utils.createBase(width));
-    console.log(utils.formatMessage("Todos os Produtos", width));
-    console.log(utils.createBase(width));
+    console.clear()
+    console.log(utils.createBase(width))
+    console.log(utils.formatMessage("Todos os Produtos", width))
+    console.log(utils.createBase(width))
     produtosController.getProdutos().forEach(produto => {
-        console.log(utils.formatMessage(`ID: ${produto.id}`, width));
-        console.log(utils.formatMessage(`Nome: ${produto.nome}`, width));
-        console.log(utils.formatMessage(`Categoria: ${produto.categoria}`, width));
-        console.log(utils.formatMessage(`Quantidade: ${produto.quantidade}`, width));
-        console.log(utils.formatMessage(`Preço: ${produto.preco}`, width));
-        console.log(utils.formatMessage("", width));
-    });
-    console.log(utils.createBase(width));
-    input("Pressione Enter para continuar...");
-    produtosView();
-};
+        console.log(utils.formatMessage(`ID: ${produto.id}`, width))
+        console.log(utils.formatMessage(`Nome: ${produto.nome}`, width))
+        console.log(utils.formatMessage(`Categoria: ${produto.categoria}`, width))
+        console.log(utils.formatMessage(`Quantidade: ${produto.quantidade}`, width))
+        console.log(utils.formatMessage(`Preço: ${produto.preco}`, width))
+        console.log(utils.formatMessage("", width))
+    })
+    console.log(utils.createBase(width))
+    input("Pressione Enter para continuar...")
+    produtosView()
+}
+
+const atualizarQtd = () => {
+    console.clear()
+    console.log(utils.createBase(width))
+    console.log(utils.formatMessage("Atualização de Quantidade", width))
+    console.log(utils.createBase(width))
+    const id = input("| * ID:").trim
+    const produto = produtosController.findById(id)
+    if (produto) {
+        console.log(utils.formatMessage(`ID: ${produto.id}`, width))
+        console.log(utils.formatMessage(`Quantidade: ${produto.quantidade}`, width))
+        console.log(utils.formatMessage(`Nome: ${produto.nome}`, width))
+        console.log(utils.createBase(width))
+        const quantidade = input("| * Nova Quantidade: ") || produto.quantidade
+        const produtoUpdate = { quantidade }
+        produtosController.save(produtoUpdate)
+        console.log(utils.createBase(width))
+        console.log(utils.formatMessage("Quantidade Alterada com sucesso!", width))
+        console.log(utils.createBase(width))
+    } else {
+        console.log(utils.createBase(width))
+        console.log(utils.formatMessage("Produto não encontrado!", width))
+        console.log(utils.createBase(width))
+    }
+    input("Pressione Enter para continuar...")
+    produtosView()
+}
+
+
 
 
 const produtosView = () => {
@@ -76,7 +105,7 @@ const produtosView = () => {
             adcProduto()
             break;
         case "3":
-            
+            atualizarQtd()
             break;
         case "4":
            
