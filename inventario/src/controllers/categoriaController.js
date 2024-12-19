@@ -3,7 +3,7 @@
  * - listarCategorias: Retorna todas as categorias. 
  * - cadastrarCategoria: Valida e adiciona uma nova categoria. 
  */
-import { categoriaRepository } from "../repositories/categoriaRepository";
+import { categoriaRepository } from "../repositories/categoriaRepository.js";
 
 
 export const categoriaController = {
@@ -14,3 +14,4 @@ export const categoriaController = {
 
     listarCategorias: () => categoriaRepository.getCategorias()
 }
+

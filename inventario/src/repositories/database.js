@@ -8,25 +8,31 @@ export const database = {
         {
         id: "1234567890123",
         nome: "Macarrao",
-        categoria: "massa",
+        categoria: "Massa",
         quantidade: "14",
         preco: "14,90"
     },
     {
         id: "1230987654321",
         nome: "Atum",
-        categoria: "enlatado",
+        categoria: "Enlatado",
         quantidade: "20",
         preco: "7,90"
     },
     {
         id: "1236549870321",
         nome: "Papel Higienico",
-        categoria: "higiene",
+        categoria: "Higiene",
         quantidade: "10",
         preco: "9,90"
     }
 ],
     
-    categorias: [enlatado,massa,higiene] 
+    categorias: [
+        {atum: "Enlatado",
+         papelHigienico: "Higiene",
+         macarrao: "Massa"
+
+        }
+    ] 
 }

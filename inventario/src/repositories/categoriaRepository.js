@@ -5,8 +5,7 @@
  */
 
 
- import { database } from "./database"
-import { produtosRepository } from "./produtosRepository";
+ import { database } from "./database.js"
 
  export const categoriaRepository = {
      // Listar Todos as Categorias
