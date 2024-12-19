@@ -3,3 +3,14 @@
  * - listarCategorias: Retorna todas as categorias. 
  * - cadastrarCategoria: Valida e adiciona uma nova categoria. 
  */
+import { categoriaRepository } from "../repositories/categoriaRepository";
+
+
+export const categoriaController = {
+
+
+    cadastrarCategoria: (categoria) => categoriaRepository.addCategoria(categoria),
+
+
+    listarCategorias: () => categoriaRepository.getCategorias()
+}

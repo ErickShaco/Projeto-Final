@@ -57,7 +57,7 @@ const atualizarQtd = () => {
     console.log(utils.createBase(width))
     console.log(utils.formatMessage("Atualização de Quantidade", width))
     console.log(utils.createBase(width))
-    const id = input("| * ID:").trim
+    const id = input("| * ID:").trim()
     const produto = produtosController.findById(id)
     if (produto) {
         console.log(utils.formatMessage(`ID: ${produto.id}`, width))
@@ -78,6 +78,38 @@ const atualizarQtd = () => {
     input("Pressione Enter para continuar...")
     produtosView()
 }
+
+const excluirProduto = () => {
+    console.clear()
+    console.log(utils.createBase(width))
+    console.log(utils.formatMessage("Excluir Produto", width))
+    console.log(utils.createBase(width))
+    const id = input("| * ID: ")
+    const produto = produtosController.findById(id)
+    if (produto) {
+        console.log(utils.formatMessage(`Nome: ${produto.nome}`, width))
+        console.log(utils.formatMessage(`Categoria: ${produto.categoria}`, width))
+        console.log(utils.formatMessage(`Quantidade: ${produto.quantidade}`, width))
+        console.log(utils.formatMessage(`Preço: ${produto.preco}`, width))
+        console.log(utils.createBase(width))
+        const confirmacao = input("| * Deseja realmente excluir? (s/n): ")
+        if (confirmacao === "s") {
+            produtosController.remove(id)
+            console.log(utils.createBase(width))
+            console.log(utils.formatMessage("Produto excluído com sucesso!", width))
+            console.log(utils.createBase(width))
+        }
+    } else {
+        console.log(utils.createBase(width))
+        console.log(utils.formatMessage("Produto não encontrado!", width))
+        console.log(utils.createBase(width))
+    }
+    input("Pressione Enter para continuar...")
+    produtosView()
+}
+
+
+
 
 
 
@@ -108,7 +140,7 @@ const produtosView = () => {
             atualizarQtd()
             break;
         case "4":
-           
+            excluirProduto()
             break;
         case "5":
             
